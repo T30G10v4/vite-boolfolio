@@ -27,6 +27,7 @@ export default {
         .then((resp) => {
 
           console.log(resp.data.results);
+          store.list = resp.data.results;
 
 
         });
@@ -49,9 +50,9 @@ export default {
 
 <template>
 
-  <div v-for="project in store.list" key="store.id">
+  <div v-for="project in store.list" key="index">
   
-      <div>PROVA</div>
+      <div>{{ project.title }}</div>
 
   </div>
 
