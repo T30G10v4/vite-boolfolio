@@ -1,48 +1,14 @@
 <script>
-
-import { store } from "./store"
-import axios, { Axios } from 'axios';
+import AppHeader from './components/AppHeader.vue';
 
 export default {
 
-  components: {
+    name: 'App',
+    components: {
 
-  },
-
-  data() {
-
-    return {
-      store
-    }
-
-
-  },
-
-  methods: {
-
-    storeProjects() {
-
-      axios
-        .get(`${store.baseURL}`)
-        .then((resp) => {
-
-          console.log(resp.data.results);
-          store.list = resp.data.results;
-
-
-        });
-
+        AppHeader
 
     }
-  },
-
-  created() {
-
-    this.storeProjects();
-
-  }
-
-
 
 }
 
@@ -50,18 +16,13 @@ export default {
 
 <template>
 
-  <div v-for="project in store.list" key="index">
-  
-      <div>{{ project.title }}</div>
-
-  </div>
+    <AppHeader />
+    <router-view></router-view>
 
 </template>
 
+<style lang="scss">
 
-
-<style>
-
-
+// @use "./styles/general.scss" as *;
 
 </style>

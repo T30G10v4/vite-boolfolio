@@ -1,0 +1,75 @@
+<script>
+
+import { store } from "./store"
+import axios, { Axios } from 'axios';
+
+export default {
+
+  components: {
+
+  },
+
+  data() {
+
+    return {
+      store
+    }
+
+
+  },
+
+  methods: {
+
+    storeProjects() {
+
+      axios
+        .get(`${store.baseURL}`)
+        .then((resp) => {
+
+          
+          store.list = resp.data.results;
+
+
+        });
+
+
+    }
+  },
+
+  created() {
+
+    this.storeProjects();
+
+  }
+
+
+
+}
+
+</script>
+
+<template>
+
+  <div v-for="project in store.list" key="index">
+  
+      
+      <div class="card border-primary">
+        
+        <div class="card-body">
+          <h2 class="card-title">{{ project.title }}</h2>
+          <p class="card-text">{{ project.description }}</p>
+          <a href="#" class="btn btn-primary">More</a>
+        </div>
+      </div>
+
+    </div>
+
+</template>
+
+
+
+<style>
+
+
+
+</style>
